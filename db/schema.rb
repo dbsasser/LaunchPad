@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_08_155617) do
+ActiveRecord::Schema.define(version: 2020_05_08_193310) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 2020_05_08_155617) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "creator_id"
+    t.index ["creator_id"], name: "index_campaigns_on_creator_id"
     t.index ["user_id"], name: "index_campaigns_on_user_id"
   end
 
@@ -59,6 +61,7 @@ ActiveRecord::Schema.define(version: 2020_05_08_155617) do
   end
 
   add_foreign_key "campaigns", "users"
+  add_foreign_key "campaigns", "users", column: "creator_id"
   add_foreign_key "comments", "campaigns"
   add_foreign_key "comments", "users"
   add_foreign_key "donations", "campaigns"
