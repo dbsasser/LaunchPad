@@ -1,19 +1,36 @@
-<%= form_for @campaign do |f| %>
+<div class="card w-50 mx-auto">
+    <div class="card-header">
+        Create a Campaign
+    </div>
+    <div class="card-body">
+        <%= form_for @campaign do |f| %>
+            
+            <div class="form-group">
+                <%= f.label :title %>
+                <%= f.text_field :title, class: 'form-control' %>
+            </div>
 
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+            <div class="form-group">
+                <%= f.label :description %>
+                <%= f.text_area :description, class: 'form-control' %>
+            </div>
 
-    <%= f.label :description %>
-    <%= f.text_area :description %>
+            <div class="form-group">
+                <%= f.label :goal %>
+                <%= f.number_field :goal, class: 'form-control' %>
+            </div>
 
-    <%= f.label :goal %>
-    <%= f.number_field :goal %>
+            <div class="form-group">
+                <%= f.label "Photo URL" %>
+                <%= f.text_field :picture, class: 'form-control' %>
+            </div>
 
-    <%= f.label :picture %>
-    <%= f.text_field :picture %>
+            <div class="form-group">
+                <%= f.submit "Create Campaign", class: 'btn btn-success' %>
+            </div>
 
-    <%= f.submit "Create Campaign" %>
-
-<% end %>
+        <% end %>
+    </div>
+</div>
 
     
