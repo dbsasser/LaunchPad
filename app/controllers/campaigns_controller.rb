@@ -14,6 +14,10 @@ class CampaignsController < ApplicationController
         end
     end
 
+    def show
+        @campaign = Campaign.find_by(id: params[:id])
+    end
+
     private 
 
     def campaign_params

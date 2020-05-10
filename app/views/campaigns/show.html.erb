@@ -1,0 +1,15 @@
+<h1><%= @campaign.title %></h1>
+Created by: <%= @campaign.creator.email %>
+
+<p>
+<%= @campaign.description %>
+</p>
+
+<%= @campaign.goal %>
+
+<br>
+
+<% @campaign.comments.each do |comment|  %>
+    <%= comment.user.email %><br>
+    <%= comment.content %>
+<% end %>
