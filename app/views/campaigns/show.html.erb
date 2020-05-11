@@ -12,6 +12,8 @@
             Raised:<br>
             $<%= @campaign.donations.sum(:amount) %>
         </p>
+
+        <%= button_to "Donate", new_campaign_donation_url(@campaign), class: "btn btn-success", method: 'get' %>
     </div>
 
     <div class="col-md-8 order-md-1">
