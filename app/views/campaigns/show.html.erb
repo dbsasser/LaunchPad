@@ -13,3 +13,6 @@ Created by: <%= image_tag @campaign.creator.photo %> <%= @campaign.creator.name 
     <%= comment.user.email %><br>
     <%= comment.content %>
 <% end %>
+
+<%= render partial: 'comments/form' %>
+

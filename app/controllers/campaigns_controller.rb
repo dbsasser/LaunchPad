@@ -16,6 +16,7 @@ class CampaignsController < ApplicationController
 
     def show
         @campaign = Campaign.find_by(id: params[:id])
+        @comment = @campaign.comments.new(user_id: current_user.id)
     end
 
     private 
