@@ -1,18 +1,35 @@
-<h1><%= @campaign.title %></h1>
-Created by: <%= image_tag @campaign.creator.photo %> <%= @campaign.creator.name %>
+<div class="row">
+    <div class="col-md-4 order-md-2 mb-4">
+        <p>
+            Creator:<br>
+            <%= image_tag @campaign.creator.photo, class: "rounded-circle" %> <%= @campaign.creator.name %>
+        </p>
+        <p>
+            Goal:<br>
+            $<%= @campaign.goal %>
+        </p>
+        <p>
+            Raised:<br>
+            $<%= @campaign.donations.sum(:amount) %>
+        </p>
+    </div>
 
-<p>
-<%= @campaign.description %>
-</p>
+    <div class="col-md-8 order-md-1">
+        <h1><%= @campaign.title %></h1>
+        <p>
+            <%= @campaign.description %>
+        </p>
+    </div>
+</div>
 
-<%= @campaign.goal %>
+<div class="row">
+    <div class="col-md-8">
+        <% @campaign.comments.each do |comment|  %>
+            <%= comment.user.email %><br>
+            <%= comment.content %>
+        <% end %>
 
-<br>
-
-<% @campaign.comments.each do |comment|  %>
-    <%= comment.user.email %><br>
-    <%= comment.content %>
-<% end %>
-
-<%= render partial: 'comments/form' %>
+        <%= render partial: 'comments/form' %>
+    </div>
+</div>
 
