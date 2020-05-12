@@ -25,6 +25,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'dotenv-rails'
+gem 'image_processing', '~> 1.2'
+gem "mini_magick"
 
 
 # Use Active Storage variant
