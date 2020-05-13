@@ -19,6 +19,10 @@ class CampaignsController < ApplicationController
         @comment = @campaign.comments.new(user_id: current_user.id)
     end
 
+    def index
+        @campaigns = Campaign.all
+    end
+
     private 
 
     def campaign_params
