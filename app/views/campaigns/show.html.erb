@@ -24,14 +24,18 @@
                 <%= button_to "Donate", new_campaign_donation_url(@campaign), class: "btn btn-success", method: 'get' %>
             </div>
         </div>
+        
+        <div class="card">
+            <div class="card-body">
+                Donations:
+                <% @campaign.donations.each do |donation| %>
+                    <%= donation.user %> - <%= donation.amount %>
+                <% end %>
+            </div>
+        </div>
     </div>
 
-    <div class="col-md-4 order-md-2 mb-4">
-        <h3>Donations</h3>
-        <% @campaign.donations.each do |donation| %>
-            <%= donation.user %> - <%= donation.amount %>
-        <% end %>
-    </div>
+
 
     <div class="col-md-8 order-md-1">
         <h1><%= @campaign.title %></h1>
