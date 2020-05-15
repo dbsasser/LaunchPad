@@ -6,7 +6,12 @@ class DonationsController < ApplicationController
       end
     
       def create
-        give_donation(donation_params)
+        @donation = Donation.create(donation_params)
+        if @donation.give_donation
+          redirect_to campaign_path(@donation.campaign)
+        else 
+          render new_campaign_donation_path(@donation.campaign)
+        end
       end
     
       private
