@@ -13,9 +13,8 @@
   <body>
   <div class="container">
     <nav class="navbar navbar-expand-md navbar-light border-bottom border-dark">
-    <a class="navbar-brand" href="#">
-      <%= image_tag "launchpad.png" %>
-    </a>
+    <%= link_to image_tag("launchpad.png"), root_path, class: "navbar-brand" %>
+    
     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
     </button>
