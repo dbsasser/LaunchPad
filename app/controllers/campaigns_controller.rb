@@ -23,6 +23,10 @@ class CampaignsController < ApplicationController
         @campaigns = Campaign.all
     end
 
+    def most_funded
+        @campaigns = Campaign.most_funded
+    end
+
     private 
 
     def campaign_params
