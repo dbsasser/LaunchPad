@@ -29,7 +29,7 @@
             <div class="card-body">
                 Donations:
                 <% @campaign.donations.each do |donation| %>
-                    <%= donation.user %> - <%= donation.amount %>
+                    <%= donation.user.name %> - $<%= donation.amount %>
                 <% end %>
             </div>
         </div>
