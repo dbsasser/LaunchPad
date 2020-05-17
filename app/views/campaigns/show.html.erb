@@ -48,8 +48,10 @@
 <div class="row">
     <div class="col-md-8">
         <% @campaign.comments.each do |comment|  %>
-            <%= comment.user.email %><br>
-            <%= comment.content %>
+            <p>
+                <strong><%= comment.user.name %></strong> says:<br>
+                <%= comment.content %>
+            </p>
         <% end %>
 
         <%= render partial: 'comments/form' %>
