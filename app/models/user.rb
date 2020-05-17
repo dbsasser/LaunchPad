@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :donations 
   has_many :campaigns, through: :donations
   has_many :comments
+  validates :name, presence: true
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
