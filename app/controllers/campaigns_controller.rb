@@ -23,6 +23,19 @@ class CampaignsController < ApplicationController
         @campaigns = Campaign.all
     end
 
+    def edit
+        @campaign = Campaign.find_by(id: params[:id])
+    end
+
+    def update 
+        @campaign = Campaign.find_by(id: params[:id])
+        if @campaign.update(campaign_params)
+            redirect_to campaign_path(@campaign)
+        else 
+            render 'edit'
+        end
+    end
+
     def most_funded
         @campaigns = Campaign.most_funded
     end
