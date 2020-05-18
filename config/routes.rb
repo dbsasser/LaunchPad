@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :comments
+  get '/campaigns/newest', to: 'campaigns#newest'
+  get '/campaigns/most_raised', to: 'campaigns#most_raised'
+  get '/campaigns/funded', to: 'campaigns#funded'
+
+  resources :comments 
   resources :donations
   resources :campaigns do
     resources :comments
