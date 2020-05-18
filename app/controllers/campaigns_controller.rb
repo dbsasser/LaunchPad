@@ -1,5 +1,8 @@
 class CampaignsController < ApplicationController
-
+    def newest
+        @campaigns = Campaign.order(created_at: :desc)
+    end
+    
     def new 
         @campaign = Campaign.new
     end 
