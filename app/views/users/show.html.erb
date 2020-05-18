@@ -1,0 +1,51 @@
+<div class="card">
+    <div class="card-header">
+        Profile
+    </div>
+    <div class="card-body">
+        <div>
+            Name: <%= @user.name %><br>
+            <% if @user == current_user %>
+                Email: <%= @user.email %><br>
+                Funds: <%= @user.funds %>
+            <% end %>
+        </div>
+        <div class="pt-3">
+            <h6>Created Campaigns:</h6>
+            <p>
+            <% if @user.created_campaigns.exists? %>
+                <% @user.created_campaigns.each do |campaign| %>
+                    <%= link_to campaign.title, campaign_path(campaign) %><br>
+                <% end %>
+            <% else %>
+                None :( 
+            <% end %>
+            </p>
+        </div>
+        <div class="pt-3">
+            <h6>Recent Donations:</h6>
+            <p>
+            <% if @user.donations.exists? %>
+                <% @user.donations.last(7).each do |donation| %>
+                    <%= link_to "$#{donation.amount} - #{donation.campaign.title}", campaign_path(donation) %><br>
+                <% end %>
+            <% else %>
+                None :( 
+            <% end %>
+            </p>
+        </div>
+        <div class="pt-3">
+            <h6>Recent Comments:</h6>
+            <p>
+            <% if @user.comments.exists? %>
+                <% @user.comments.last(7).each do |comment| %>
+                    <%= link_to comment.campaign.title, campaign_path(comment) %><br>
+                    <%= comment.content %><br><br>
+                <% end %>
+            <% else %>
+                None :( 
+            <% end %>
+            </p>
+        </div>
+    </div>
+</div>
