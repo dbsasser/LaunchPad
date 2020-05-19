@@ -8,7 +8,7 @@ class Campaign < ApplicationRecord
   validates :picture, presence: true
   validates :goal, numericality: { only_integer: true, greater_than: 0 }
   validates :creator_id, presence: true
-  scope :most_raised, -> { joins.(:donations).group(:campaign_id).order("sum_amount DESC").sum(:amount)}
+  scope :most_raised, -> { joins(:donations).group(:campaign_id).order("sum_amount DESC").sum(:amount)}
 
 
   def percent_raised
