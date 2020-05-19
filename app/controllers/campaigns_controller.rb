@@ -44,7 +44,8 @@ class CampaignsController < ApplicationController
 
     def most_raised
         # @campaigns = Campaign.all.sort_by { |n| n.donations.sum(:amount) }
-        @campaigns = Campaign.joins(:donations).group(:campaign_id).order("sum_amount DESC").sum(:amount)
+        # @campaigns = Campaign.joins(:donations).group(:campaign_id).order("sum_amount DESC").sum(:amount)
+        @campaigns = Campaign.most_raised
     end
 
     def funded 
