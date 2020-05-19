@@ -57,6 +57,9 @@
         <p>
             <%= @campaign.description %>
         </p>
+        <% if current_user == @campaign.creator %>
+            <%= link_to 'Edit Campaign', edit_campaign_path(@campaign) %>
+        <% end %>
     </div>
 </div>
 
