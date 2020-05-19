@@ -1,4 +1,6 @@
 class DonationsController < ApplicationController
+    
+    before_action :require_login, only: [:new, :create]
 
     def new
       @campaign = Campaign.find_by(id: params[:campaign_id])
