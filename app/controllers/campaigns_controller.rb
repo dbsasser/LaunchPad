@@ -1,4 +1,8 @@
 class CampaignsController < ApplicationController
+    before_action :set_campaign, only: [:show, :edit, :update]
+    before_action :require_login, only: [:new, :create, :edit, :update]
+    before_action :authorize_campaign_creator, only: [:edit, :update
+    ]
     def newest
         @campaigns = Campaign.order(created_at: :desc)
     end
@@ -18,7 +22,6 @@ class CampaignsController < ApplicationController
     end
 
     def show
-        @campaign = Campaign.find_by(id: params[:id])
         if user_signed_in?
             @comment = @campaign.comments.new(user_id: current_user.id)
         end
@@ -29,11 +32,9 @@ class CampaignsController < ApplicationController
     end
 
     def edit
-        @campaign = Campaign.find_by(id: params[:id])
     end
 
     def update 
-        @campaign = Campaign.find_by(id: params[:id])
         if @campaign.update(campaign_params)
             redirect_to campaign_path(@campaign)
         else 
