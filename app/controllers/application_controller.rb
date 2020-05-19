@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
     end
 
     def authorize_campaign_creator
-        redirect_to 'campaigns#index' unless @campaign.creator == current_user
+        redirect_to campaigns_path unless @campaign.creator == current_user
     end
 
 
