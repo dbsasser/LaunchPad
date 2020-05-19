@@ -1,8 +1,8 @@
 class CampaignsController < ApplicationController
     before_action :set_campaign, only: [:show, :edit, :update]
     before_action :require_login, only: [:new, :create, :edit, :update]
-    before_action :authorize_campaign_creator, only: [:edit, :update
-    ]
+    before_action :authorize_campaign_creator, only: [:edit, :update]
+    
     def newest
         @campaigns = Campaign.order(created_at: :desc)
     end
