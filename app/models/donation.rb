@@ -8,7 +8,7 @@ class Donation < ApplicationRecord
   def give_donation
     if self.user.funds >= self.amount
       self.user.funds -= self.amount
-      self.save
+      self.user.save
     end
   end 
 
