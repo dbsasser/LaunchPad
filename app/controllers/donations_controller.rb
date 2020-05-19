@@ -6,11 +6,13 @@ class DonationsController < ApplicationController
       end
     
       def create
-        @donation = Donation.create(donation_params)
+        @donation = Donation.new(donation_params)
+        @donation.give_donation && @donation.save
         if @donation.give_donation
           redirect_to campaign_path(@donation.campaign)
-        else 
-          render new_campaign_donation_path(@donation.campaign)
+        else
+          @msg = "Sorry, you don't have enough funds for that." 
+          render 'new'
         end
       end
     
