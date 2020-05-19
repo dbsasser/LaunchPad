@@ -19,7 +19,9 @@ class CampaignsController < ApplicationController
 
     def show
         @campaign = Campaign.find_by(id: params[:id])
-        @comment = @campaign.comments.new(user_id: current_user.id)
+        if user_signed_in?
+            @comment = @campaign.comments.new(user_id: current_user.id)
+        end
     end
 
     def index
@@ -39,8 +41,9 @@ class CampaignsController < ApplicationController
         end
     end
 
-    def most_funded
-        @campaigns = Campaign.most_funded
+    def most_raised
+        # @campaigns = Campaign.all.sort_by { |n| n.donations.sum(:amount) }
+        @campaigns = Campaign.joins(:donations).group(:campaign_id).order("sum_amount DESC").sum(:amount)
     end
 
     def funded 
