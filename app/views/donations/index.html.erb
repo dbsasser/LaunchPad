@@ -1,0 +1,23 @@
+<div class="card w-50">
+    <div class="card-header">
+        All Donations
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <% @campaign.donations.each do |donation| %>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-auto">
+                                 <%= image_tag donation.user.photo, class: "rounded-circle" %>
+                            </div>
+                            <div class="col">
+                                <%= donation.user.name %> <br> <span class="text-success">$<%= donation.amount %></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
