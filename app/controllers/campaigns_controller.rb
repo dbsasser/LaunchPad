@@ -43,6 +43,10 @@ class CampaignsController < ApplicationController
         @campaigns = Campaign.most_funded
     end
 
+    def funded 
+        @campaigns = Campaign.all.select { |n| n.donations.sum(:amount) >=  n.goal }
+    end
+
     private 
 
     def campaign_params
