@@ -64,7 +64,8 @@
 </div>
 
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-8 mt-2">
+    <h5> Comments: </h5>
         <% @campaign.comments.each do |comment|  %>
             <p>
                 <strong><%= comment.user.name %></strong> says:<br>
@@ -72,7 +73,9 @@
             </p>
         <% end %>
 
-        <%= render partial: 'comments/form' %>
+        <% if user_signed_in? %>
+            <%= render partial: 'comments/form' %>
+        <% end %>
     </div>
 </div>
 
