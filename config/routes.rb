@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
+  
+  #Need to namespace
   get '/campaigns/newest', to: 'campaigns#newest'
   get '/campaigns/most_raised', to: 'campaigns#most_raised'
   get '/campaigns/funded', to: 'campaigns#funded'
 
-  resources :comments 
-  resources :donations
+  
   resources :campaigns do
-    resources :comments
-    resources :donations
+    resources :comments, only: [:new, :create]
+    resources :donations, only: [:new, :create, :index ]
   end
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", registrations: 'registrations'  }
   resources :users, only: [:show]
