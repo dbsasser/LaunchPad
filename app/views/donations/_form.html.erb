@@ -1,3 +1,9 @@
+<% if @msg %>
+    <div class="alert alert-danger" role="alert">
+        <%= @msg %>
+    </div>
+<% end %>
+
 <%= form_for [@campaign, @donation] do |f| %>
     <%= f.hidden_field :campaign_id %>
     <%= f.hidden_field :user_id %>
