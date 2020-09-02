@@ -1,8 +1,8 @@
 # LaunchPad
 
-LaunchPad is crowdfunding platform. Users can create, comment, and donate to campaigns.  
+LaunchPad is a crowdfunding platform. Users can create, comment, and donate to campaigns.  
 
-Actual payment for donations is not mplemented. Currently, new users start with $1000 imaginary dollars in their account.
+Actual payment for donations is not yet implemented. Currently, new users start with an imaginary $1000 in their account.
 
 ## Contributing
 
